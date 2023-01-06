@@ -22,7 +22,7 @@ public class MovingPlatform : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         Vector3 nextPosition = toEnd ? startPosition + endPosition : startPosition;
         Vector3 amtMove = (nextPosition - transform.position).normalized;

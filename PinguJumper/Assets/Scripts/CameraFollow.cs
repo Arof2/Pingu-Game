@@ -15,7 +15,7 @@ public class CameraFollow : MonoBehaviour
     }
 
     // Update is called once per frame
-    void LateUpdate()
+    void Update()
     {
         Vector3 nPosition = followdObject.position + (-followdObject.forward * distanceAway) + (followdObject.up * distanceUp);
 

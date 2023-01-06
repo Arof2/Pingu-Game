@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 
 public class PlayerBehavior : MonoBehaviour
@@ -91,12 +92,10 @@ public class PlayerBehavior : MonoBehaviour
          velocity.z = forwardInput * movSettings.runVelocity;
 
          playerRigidbody.velocity = transform.TransformDirection(velocity);
-      
    }
 
    private void Jump()
    {
-
       if (jumpInput>0f && Grounded())
       {
          velocity.x = playerRigidbody.velocity.x;
@@ -104,11 +103,7 @@ public class PlayerBehavior : MonoBehaviour
          velocity.z = playerRigidbody.velocity.z;
 
          playerRigidbody.velocity = velocity;
-
-
       }
-      
-      
    }
 
    private bool Grounded()
@@ -118,11 +113,24 @@ public class PlayerBehavior : MonoBehaviour
    
    private void OnCollisionEnter(Collision other)
    {
-      transform.SetParent(other.transform.parent);
+      if (transform.parent != null)
+      {
+         GameObject R = transform.parent.gameObject;
+         transform.SetParent(null);
+         Destroy(R);
+      }
+      GameObject G = new GameObject();
+      G.transform.SetParent(other.transform.parent.transform, true);
+      transform.SetParent(G.transform,false);
    }
    private void OnCollisionExit(Collision other)
    {
-      transform.SetParent(null);
+      if (other.transform.parent.gameObject == transform.parent.parent.gameObject)
+      {
+         GameObject G = transform.parent.gameObject;
+         transform.SetParent(null);
+         Destroy(G);
+      }
    }
 
 
