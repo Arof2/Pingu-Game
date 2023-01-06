@@ -6,8 +6,8 @@ using UnityEngine;
 
 public class RotatingPlatform : MonoBehaviour
 {
-    [SerializeField] private float rotationSpeed;
-    [SerializeField] private bool localValues;
+    [SerializeField] private float rotationSpeed = 1;
+    [SerializeField] private bool localValues = true;
     [SerializeField] private Vector3 rotationPoint = Vector3.zero;
     [SerializeField] private Vector3 rotationAxis = Vector3.up;
     void FixedUpdate()
@@ -27,7 +27,8 @@ public class RotatingPlatform : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        DrawGizmosCircle(transform.position + rotationPoint, rotationAxis, 10, 20);
+        if(rotationSpeed != 0)
+            DrawGizmosCircle(transform.position + rotationPoint, rotationAxis, 10, 20);
     }
 
     // Credit to https://answers.unity.com/questions/842981/draw-2d-circle-with-gizmos.html

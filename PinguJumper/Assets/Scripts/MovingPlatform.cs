@@ -11,14 +11,11 @@ public class MovingPlatform : MonoBehaviour
     [SerializeField] private float speed;
     private bool toEnd;
     
-    
-
     // Start is called before the first frame update
     void Start()
     {
         startPosition = transform.position;
         toEnd = true;
-
     }
 
     // Update is called once per frame
@@ -31,12 +28,10 @@ public class MovingPlatform : MonoBehaviour
 
         if(Vector3. Distance(nextPosition, transform.position)<amtMove.magnitude)
         toEnd = !toEnd;
-
     }
 
     private void OnDrawGizmos()
     {
-
         Gizmos.color = Color.red;
         if (Application.isPlaying)
         {
@@ -46,13 +41,5 @@ public class MovingPlatform : MonoBehaviour
         {
             Gizmos.DrawLine(transform.position,transform.position + endPosition);
         }
-
-
-
     }
-    
-    
-    
-    
-    
 }
