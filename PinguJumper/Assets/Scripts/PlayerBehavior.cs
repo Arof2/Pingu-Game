@@ -13,10 +13,12 @@ public class PlayerBehavior : MonoBehaviour
   private Rigidbody playerRigidbody;
   private Vector3 velocity;
   private Quaternion targetRotation;
-  private float forwardInput, sidwaysInput, turnInput, jumpInput;
+  private float forwardInput, sidwaysInput, turnInput, jumpInput, scrollInput;
   private Vector3 baseScale, direction;
   private float turnSmoothVelocity;
-  
+  public CinemachineFreeLook cam;
+  private float[] startOrbits = new float[3], targetOrbits = new float[3];
+  private float currentMultiplier = 1;
   
    //input settings
    [System.Serializable]
@@ -38,6 +40,12 @@ public class PlayerBehavior : MonoBehaviour
       public float jumpVelocity = 16;
       public float distanceToGround = 1.3f;
       public float turnSmoothTime = 0.1f;
+      [Range(0.25f, 1f)]
+      public float zoomIn = 0.8f;
+      [Range(1f, 3f)]
+      public float zoomOut = 2f;
+
+      public float zoomStepSize = 0.1f;
       public LayerMask ground;
    }
    //input values
@@ -53,6 +61,11 @@ public class PlayerBehavior : MonoBehaviour
       sidwaysInput = 0f;
       turnInput = 0f;
       jumpInput = 0f;
+      for (int i = 0; i < 3; i++)
+      {
+         startOrbits[i] = cam.m_Orbits[i].m_Radius;
+         targetOrbits[i] = cam.m_Orbits[i].m_Radius;
+      }
    }
 
 
@@ -60,6 +73,7 @@ public class PlayerBehavior : MonoBehaviour
    {
       GetInput();
       Turn();
+      ScrollCamera();
    }
 
    private void FixedUpdate()
@@ -74,6 +88,30 @@ public class PlayerBehavior : MonoBehaviour
       sidwaysInput = Input.GetAxisRaw(inSettings.SIDEWAYS_AXIS);
       turnInput = Input.GetAxis(inSettings.TURN_AXIS);
       jumpInput = Input.GetAxis(inSettings.JUMP_AXIS);
+      scrollInput = -Input.mouseScrollDelta.y;
+   }
+
+   private void ScrollCamera()
+   {
+      if (scrollInput != 0)
+      {
+         float mult = movSettings.zoomStepSize;
+         if (!(currentMultiplier + scrollInput * mult > movSettings.zoomOut ||
+               currentMultiplier + scrollInput * mult < movSettings.zoomIn))
+         {
+            currentMultiplier += scrollInput * mult;
+            for (int i = 0; i < 3; i++)
+            {
+               targetOrbits[i] = startOrbits[i] * currentMultiplier;
+            }
+         }
+      }
+
+      //SmoothMovement of the camera
+      for (int i = 0; i < 3; i++)
+      {
+         cam.m_Orbits[i].m_Radius = Mathf.Lerp(cam.m_Orbits[i].m_Radius, targetOrbits[i], Time.deltaTime * 6);
+      }
    }
 
    private void Turn()
