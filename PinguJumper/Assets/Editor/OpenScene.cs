@@ -5,18 +5,18 @@ using System.Collections;
 
 public class OpenScene 
 {
-    [MenuItem("Open Scene/Start Screen %#&0")]
+    [MenuItem("Open Scene/Player Movement test %#&0")]
     private static void StartScreen()
     {
         EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo();
-        EditorSceneManager.OpenScene("Assets/Scenes/StartScreen.unity");
+        EditorSceneManager.OpenScene("Assets/Scenes/Player Movement Test.unity");
     }
     
-    [MenuItem("Open Scene/Level1 %#&1")]
+    [MenuItem("Open Scene/Level 2 %#&1")]
     private static void Level1()
     {
         EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo();
-        EditorSceneManager.OpenScene("Assets/Scenes/Level1.unity");
+        EditorSceneManager.OpenScene("Assets/Scenes/Level 2.unity");
     }
     
 }
