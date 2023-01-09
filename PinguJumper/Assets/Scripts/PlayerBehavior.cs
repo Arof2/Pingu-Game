@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
+using Cinemachine;
 using UnityEngine;
 
 public class PlayerBehavior : MonoBehaviour
@@ -13,8 +14,8 @@ public class PlayerBehavior : MonoBehaviour
   private Vector3 velocity;
   private Quaternion targetRotation;
   private float forwardInput, sidwaysInput, turnInput, jumpInput;
-
-  private Vector3 baseScale;
+  private Vector3 baseScale, direction;
+  private float turnSmoothVelocity;
   
   
    //input settings
@@ -36,6 +37,7 @@ public class PlayerBehavior : MonoBehaviour
       public float rotateVelocity = 100;
       public float jumpVelocity = 16;
       public float distanceToGround = 1.3f;
+      public float turnSmoothTime = 0.1f;
       public LayerMask ground;
    }
    //input values
@@ -68,30 +70,42 @@ public class PlayerBehavior : MonoBehaviour
 
    private void GetInput()
    {
-      forwardInput = Input.GetAxis(inSettings.FORWARD_AXIS);
-      sidwaysInput = Input.GetAxis(inSettings.SIDEWAYS_AXIS);
+      forwardInput = -Input.GetAxisRaw(inSettings.FORWARD_AXIS);
+      sidwaysInput = Input.GetAxisRaw(inSettings.SIDEWAYS_AXIS);
       turnInput = Input.GetAxis(inSettings.TURN_AXIS);
       jumpInput = Input.GetAxis(inSettings.JUMP_AXIS);
    }
 
    private void Turn()
    {
-      if (Mathf.Abs(turnInput) > 0)
+      if (sidwaysInput != 0 || forwardInput != 0)
       {
-         var amtToRotate = movSettings.rotateVelocity * turnInput * Time.deltaTime;
-         targetRotation *= Quaternion.AngleAxis(amtToRotate, Vector3.up);
+         Transform G = Camera.main.gameObject.transform;
+         direction = new Vector3(forwardInput, 0f, sidwaysInput).normalized;
+         float yRotation = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
+         float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, yRotation + G.eulerAngles.y, ref turnSmoothVelocity, movSettings.turnSmoothTime);
+         transform.rotation = Quaternion.Euler(0,angle,0);
       }
-
-      transform.rotation = targetRotation;
+      else
+      { 
+         //if the player is angainst a wall his angular velocity.y will increase. That makes him just rotate
+         playerRigidbody.angularVelocity = new Vector3(playerRigidbody.angularVelocity.x, 0, playerRigidbody.angularVelocity.z);
+      }
    }
 
    private void Run()
    {
-      velocity.x = sidwaysInput * movSettings.runVelocity;
-         velocity.y = playerRigidbody.velocity.y;
-         velocity.z = forwardInput * movSettings.runVelocity;
-
-         playerRigidbody.velocity = transform.TransformDirection(velocity);
+      //We just set the velocity to forward so he only ever walks forward
+      //but thats fine cause he gets rotated the right way in the Turn() function
+      if (sidwaysInput != 0 || forwardInput != 0)
+      {
+         playerRigidbody.velocity = transform.TransformDirection(new Vector3(1 * movSettings.runVelocity, playerRigidbody.velocity.y, 0));
+      }
+      else
+      {
+         playerRigidbody.velocity = transform.TransformDirection(new Vector3(0, playerRigidbody.velocity.y, 0));
+      }
+      
    }
 
    private void Jump()
@@ -142,7 +156,6 @@ public class PlayerBehavior : MonoBehaviour
    public void Spawn()
    {
       transform.position = spawnpoint.position;
-
    }
 
    private void OnTriggerEnter(Collider other)
