@@ -16,13 +16,13 @@ public class VanishingPlatform : MonoBehaviour
     private bool vanishing = false;
     private Color originalColor;
     private MeshRenderer rend;
-    private BoxCollider col;
+    private Collider col;
 
     private void Awake()
     {
-        originalColor = transform.GetChild(0).GetComponent<Renderer>().material.color;
-        rend = transform.GetChild(0).GetComponent<MeshRenderer>();
-        col = GetComponent<BoxCollider>();
+        originalColor = GetComponent<Renderer>().material.color;
+        rend = GetComponent<MeshRenderer>();
+        col = GetComponent<Collider>();
     }
 
     private void OnCollisionEnter(Collision collision)
