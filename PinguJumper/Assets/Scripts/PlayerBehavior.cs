@@ -165,23 +165,29 @@ public class PlayerBehavior : MonoBehaviour
    
    private void OnCollisionEnter(Collision other)
    {
-      if (transform.parent != null)
+      if (!other.gameObject.CompareTag("DontParent"))
       {
-         GameObject R = transform.parent.gameObject;
-         transform.SetParent(null);
-         Destroy(R);
+         if (transform.parent != null)
+         {
+            GameObject R = transform.parent.gameObject;
+            transform.SetParent(null);
+            Destroy(R);
+         }
+         GameObject G = new GameObject();
+         G.transform.SetParent(other.transform.parent.transform, true);
+         transform.SetParent(G.transform,false);
       }
-      GameObject G = new GameObject();
-      G.transform.SetParent(other.transform.parent.transform, true);
-      transform.SetParent(G.transform,false);
    }
    private void OnCollisionExit(Collision other)
    {
-      if (other.transform.parent.gameObject == transform.parent.parent.gameObject)
+      if (!other.gameObject.CompareTag("DontParent"))
       {
-         GameObject G = transform.parent.gameObject;
-         transform.SetParent(null);
-         Destroy(G);
+         if (other.transform.parent.gameObject == transform.parent.parent.gameObject)
+         {
+            GameObject G = transform.parent.gameObject;
+            transform.SetParent(null);
+            Destroy(G);
+         }
       }
    }
 
