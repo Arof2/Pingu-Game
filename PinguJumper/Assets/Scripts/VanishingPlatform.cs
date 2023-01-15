@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.UIElements;
 
 public class VanishingPlatform : MonoBehaviour
 {
@@ -12,39 +13,38 @@ public class VanishingPlatform : MonoBehaviour
     [SerializeField] private float timeTillreappear = 0.5f;
     [SerializeField] private int amtOfBlinksVanish = 3 ;
     [SerializeField] private int amtOfBlinksUnvanish = 3 ;
+    private bool vanishing = false;
+    private Color originalColor;
+    private MeshRenderer rend;
+    private BoxCollider col;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-       
-        
+        originalColor = transform.GetChild(0).GetComponent<Renderer>().material.color;
+        rend = transform.GetChild(0).GetComponent<MeshRenderer>();
+        col = GetComponent<BoxCollider>();
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        StartCoroutine(Vanish());
+        if (collision.gameObject.CompareTag("Player") && !vanishing)
+        {
+            vanishing = true;
+            StartCoroutine(Vanish());
+        }
     }
 
 
     private IEnumerator Vanish()
     {
-        Color oldColor = GetComponent<Renderer>().material.color;
         StartCoroutine(Blink(timeTillVanish, amtOfBlinksVanish));
         yield return new WaitForSeconds(timeTillVanish);
-        GetComponent<Collider>().enabled = false;
-        GetComponent<Renderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
+        col.enabled = false;
+        rend.material.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
         yield return new WaitForSeconds(timeTillUnvanish);
-        StartCoroutine(Blink(timeTillreappear, amtOfBlinksUnvanish));
-        GetComponent<Collider>().enabled = true;
-        //GetComponent<Renderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
-        GetComponent<Renderer>().material.color = oldColor;
+        col.enabled = true;
+        rend.material.color = originalColor;
+        vanishing = false;
     }
 
     private IEnumerator Blink(float time, int amt)
@@ -52,10 +52,9 @@ public class VanishingPlatform : MonoBehaviour
         float timeToWait = time / (amt * 2);
         while (amt>0)
         {
-            Color oldColor = GetComponent<Renderer>().material.color;
-            GetComponent<Renderer>().material.color = new Color(1.0f, 1.0f, 1.0f, maxTransparency);
+            rend.material.color = new Color(1.0f, 1.0f, 1.0f, maxTransparency);
             yield return new WaitForSeconds(timeToWait);
-            GetComponent<Renderer>().material.color = oldColor;
+            rend.material.color = originalColor;
             yield return new WaitForSeconds(timeToWait);
             amt--;
         }
