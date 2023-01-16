@@ -13,14 +13,15 @@ public class PlayerBehavior : MonoBehaviour
   private Rigidbody playerRigidbody;
   private Vector3 velocity;
   private Quaternion targetRotation;
-  private float forwardInput, sidwaysInput, turnInput, jumpInput, scrollInput;
+  public float forwardInput, sidwaysInput, turnInput, jumpInput, scrollInput, downwardInput;
   private Vector3 baseScale, direction;
   private float turnSmoothVelocity;
   public CinemachineFreeLook cam;
   private float[] startOrbits = new float[3], targetOrbits = new float[3];
   private float currentMultiplier = 1;
-  
-   //input settings
+  private bool godMode = false;
+
+  //input settings
    [System.Serializable]
    public class InputSettings
    {
@@ -28,6 +29,7 @@ public class PlayerBehavior : MonoBehaviour
       public string SIDEWAYS_AXIS = "Horizontal";
       public string TURN_AXIS = "Mouse X";
       public string JUMP_AXIS = "Jump";
+      public KeyCode godModeDownwards = KeyCode.LeftControl;
    }
    
    
@@ -71,6 +73,24 @@ public class PlayerBehavior : MonoBehaviour
 
    private void Update()
    {
+      KeyCode[] combo = new[] { KeyCode.LeftControl, KeyCode.G };
+      if ((Input.GetKeyDown(KeyCode.LeftControl) && Input.GetKey(KeyCode.G)) ||
+          (Input.GetKeyDown(KeyCode.G) && Input.GetKey(KeyCode.LeftControl)))
+      {
+         if (godMode)
+         {
+            godMode = false;
+            playerRigidbody.useGravity = true;
+         }
+         else
+         {
+            godMode = true;
+            playerRigidbody.useGravity = false;
+         }
+      }
+         
+         
+      
       GetInput();
       Turn();
       ScrollCamera();
@@ -78,8 +98,11 @@ public class PlayerBehavior : MonoBehaviour
 
    private void FixedUpdate()
    {
+      if(godMode)
+         Fly();
+      else
+         Jump();
       Run();
-      Jump();
    }
 
    private void GetInput()
@@ -89,6 +112,7 @@ public class PlayerBehavior : MonoBehaviour
       turnInput = Input.GetAxis(inSettings.TURN_AXIS);
       jumpInput = Input.GetAxis(inSettings.JUMP_AXIS);
       scrollInput = -Input.mouseScrollDelta.y;
+      downwardInput = Input.GetKey(inSettings.godModeDownwards) ? 1 : 0;
    }
 
    private void ScrollCamera()
@@ -144,6 +168,22 @@ public class PlayerBehavior : MonoBehaviour
          playerRigidbody.velocity = transform.TransformDirection(new Vector3(0, playerRigidbody.velocity.y, 0));
       }
       
+   }
+
+   private void Fly()
+   {
+      if (jumpInput>0f || downwardInput > 0)
+      {
+         velocity.y = movSettings.jumpVelocity * jumpInput - downwardInput *  movSettings.jumpVelocity;
+      }
+      else
+      {
+         velocity.y = 0;
+      }
+      velocity.x = playerRigidbody.velocity.x;
+      
+      velocity.z = playerRigidbody.velocity.z;
+      playerRigidbody.velocity = velocity;
    }
 
    private void Jump()

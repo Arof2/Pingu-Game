@@ -10,9 +10,7 @@ public class VanishingPlatform : MonoBehaviour
     [SerializeField] private float maxTransparency = 0.5f;
     [SerializeField] private float timeTillVanish = 1.0f;
     [SerializeField] private float timeTillUnvanish = 5.0f;
-    [SerializeField] private float timeTillreappear = 0.5f;
     [SerializeField] private int amtOfBlinksVanish = 3 ;
-    [SerializeField] private int amtOfBlinksUnvanish = 3 ;
     private bool vanishing = false;
     private Color originalColor;
     private MeshRenderer rend;
