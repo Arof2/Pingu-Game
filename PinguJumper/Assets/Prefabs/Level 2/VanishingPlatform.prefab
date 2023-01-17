@@ -50,9 +50,7 @@ MonoBehaviour:
   maxTransparency: 0.25
   timeTillVanish: 2
   timeTillUnvanish: 3
-  timeTillreappear: 0.5
   amtOfBlinksVanish: 3
-  amtOfBlinksUnvanish: 3
 --- !u!33 &1632420653508313657
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -110,7 +108,7 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6907636935519955580}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 5b86925e9babfe848aabef03d1aa5176, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4

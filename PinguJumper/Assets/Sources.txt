@@ -1,0 +1,22 @@
+
+
+
+All non-original Assets:
+
+
+    Animations:
+
+        https://www.mixamo.com/#/?limit=96&page=1&query=Standard+Walk
+            (Walk Animation)
+        https://www.mixamo.com/#/?page=1&query=Happy+Idle
+            (Idle Animation)
+
+
+
+
+    Unity Asset Store:
+
+        https://assetstore.unity.com/packages/2d/textures-materials/sky/customizable-skybox-174576
+            (Skybox Materials)
+        https://assetstore.unity.com/packages/2d/textures-materials/water/stylize-water-texture-153577
+            (Water Texture)
