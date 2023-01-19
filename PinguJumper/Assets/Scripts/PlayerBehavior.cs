@@ -182,7 +182,7 @@ public class PlayerBehavior : MonoBehaviour
    {
       inControl = state;
       cam.gameObject.SetActive(state);
-      playerRigidbody.useGravity = state;
+      playerRigidbody.isKinematic = !state;
    }
 
    private void Fly()

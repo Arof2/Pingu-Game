@@ -15,6 +15,7 @@ public class PrismAusrichten : MonoBehaviour
     [SerializeField]private LineRenderer energyStrahl;
     [SerializeField] private Transform orientation;
     public float maxDistance = 100;
+    private PrismAusrichten anotherPrism;
 
     private void Awake()
     {
@@ -27,7 +28,7 @@ public class PrismAusrichten : MonoBehaviour
 
     public void Update()
     {
-        if (origin)
+        if (origin && !ausrichten)
         {
             CastRay();
         }
@@ -57,31 +58,53 @@ public class PrismAusrichten : MonoBehaviour
             if (hit.collider.CompareTag("Prism"))
             {
                 energyStrahl.SetPositions(new Vector3[]{transform.position, hit.collider.transform.position});
-                PrismAusrichten hittet = hit.collider.GetComponent<PrismAusrichten>();
-                if(!hittet.origin)
-                    hittet.CastRay();
-
+                anotherPrism = hit.collider.GetComponent<PrismAusrichten>();
+                if(!anotherPrism.origin)
+                    anotherPrism.CastRay();
             }
             else
             {
+                if (anotherPrism != null)
+                {
+                    anotherPrism.StopRay();
+                    anotherPrism = null;
+                }
+                anotherPrism = null;
                 energyStrahl.SetPositions(new Vector3[]{transform.position, hit.point});
             }
         }
         else
         {
+            if (anotherPrism != null)
+            {
+                anotherPrism.StopRay();
+                anotherPrism = null;
+            }
+            anotherPrism = null;
             energyStrahl.SetPositions(new Vector3[]{transform.position, (orientation.position - transform.position).normalized * maxDistance});
         }
         
     }
 
+    public void StopRay()
+    {
+        energyStrahl.enabled = false;
+        if (anotherPrism != null)
+        {
+            anotherPrism.StopRay();
+            anotherPrism = null;
+        }
+    }
+
     public void AusrichtungStarten()
-    { 
+    {
+        StopRay();
         ausrichten = true;
         player.changePlayerControl(false);
         rendere.enabled = false;
         text.SetActive(false);
         cam.transform.position = transform.position;
-        cam.transform.rotation = Quaternion.Euler(0,0,0);
+        cam.transform.rotation = transform.rotation * Quaternion.Euler(0,-90,0);
         overlay.SetActive(true);
     }
 

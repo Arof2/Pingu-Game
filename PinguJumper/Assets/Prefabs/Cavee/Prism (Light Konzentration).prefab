@@ -181,7 +181,7 @@ GameObject:
   - component: {fileID: 1680314736317188578}
   - component: {fileID: 1680314736317188579}
   - component: {fileID: 1680314736317188588}
-  - component: {fileID: 8996202608286015682}
+  - component: {fileID: 9058730043174115194}
   m_Layer: 0
   m_Name: Prism (Light Konzentration)
   m_TagString: Prism
@@ -288,8 +288,8 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.1
   m_Center: {x: 0, y: 0.0025, z: 0}
---- !u!64 &8996202608286015682
-MeshCollider:
+--- !u!65 &9058730043174115194
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -298,10 +298,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 738721038751157308, guid: 8208fc3e58509ad4094c6b2e2f52d57f, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 0.017320508, y: 0.015, z: 0.02}
+  m_Center: {x: 0, y: 0.0025, z: 0}
 --- !u!1 &1680314737240557491
 GameObject:
   m_ObjectHideFlags: 0
