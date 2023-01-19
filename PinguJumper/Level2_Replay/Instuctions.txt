@@ -1,0 +1,12 @@
+Record a Replay:
+
+keep "R" pressed durring the first second of Level 2
+
+
+
+
+Play a Replay:
+
+Rename the Replay you want to play to "play.txt"
+
+keep "P" pressed durring the first second of Level 2

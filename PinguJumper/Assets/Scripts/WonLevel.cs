@@ -12,9 +12,10 @@ public class WonLevel : MonoBehaviour
     [SerializeField] private Transform playerFinalPos;
     [SerializeField] private Transform cameraFinalPos;
     [SerializeField] private Transform lostPinguPos;
-    [SerializeField] private Object player;
-    [SerializeField] private Object animatedPlayer;
-    [SerializeField] private Object camera;
+    [SerializeField] private GameObject player;
+    [SerializeField] private GameObject animatedPlayer;
+    [SerializeField] private GameObject playercamera;
+    [SerializeField] private GameObject gostPlayer;
     [SerializeField] private float timer = 3;
 
     private Boolean triggered;
@@ -37,7 +38,7 @@ public class WonLevel : MonoBehaviour
 
 
             //sets Camera
-            Transform ctransf = camera.GetComponent<Transform>();
+            Transform ctransf = playercamera.GetComponent<Transform>();
             ctransf.position = cameraFinalPos.position;
             ctransf.LookAt(((playerFinalPos.position+lostPinguPos.position)/2)+new Vector3(0.0f,0.35f,0.0f));
 
@@ -47,10 +48,7 @@ public class WonLevel : MonoBehaviour
         if (timer <= 0.0f)
         {
             //Save Playsave if currently recording
-            
-            
-            
-            
+            gostPlayer.GetComponent<GostPlayer>().SaveRecording();
             //Change to HUB
             // SceneManager.LoadScene();
 
@@ -66,7 +64,7 @@ public class WonLevel : MonoBehaviour
         if (other.tag == "Player")
         {
             
-            camera.GetComponent<CinemachineBrain>().enabled = false;
+            playercamera.GetComponent<CinemachineBrain>().enabled = false;
             player.GetComponent<PlayerBehavior>().enabled = false;
             player.GetComponent<Rigidbody>().isKinematic = true;
            // player.GetComponent<Rigidbody>().useGravity = false;
