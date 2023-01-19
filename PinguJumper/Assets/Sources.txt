@@ -10,6 +10,10 @@ All non-original Assets:
             (Walk Animation)
         https://www.mixamo.com/#/?page=1&query=Happy+Idle
             (Idle Animation)
+        https://www.mixamo.com/#/?page=1&query=Sad+Idle
+            (Sad Idle Animation)
+        https://www.mixamo.com/#/?genres=&page=1&query=Excited
+            (Excited Animation)
 
 
 
