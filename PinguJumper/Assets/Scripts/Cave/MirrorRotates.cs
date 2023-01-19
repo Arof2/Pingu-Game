@@ -5,16 +5,18 @@ using UnityEngine;
 
 public class MirrorRotates : MonoBehaviour
 {
+    private float speed = 0.05f;
     public void Update()
     {
-        transform.rotation *= Quaternion.Euler(0,1,0);
+        transform.rotation *= Quaternion.Euler(0,speed,0);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            //Add the Mirror to the players inventory or place it on its correct spot
+            collision.gameObject.GetComponent<MirrorForPlayer>().AddMirror();
+            gameObject.SetActive(false);
         }
     }
 }

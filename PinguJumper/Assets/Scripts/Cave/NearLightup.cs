@@ -26,7 +26,7 @@ public class NearLightup : MonoBehaviour
 
     public void Update()
     {
-        if (frameSkip++ > 20)
+        if (frameSkip++ > 60)
         {
             frameSkip = 0;
             GameObject player = GameObject.FindObjectOfType<PlayerBehavior>().gameObject;

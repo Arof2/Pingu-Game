@@ -19,7 +19,7 @@ public class PlayerBehavior : MonoBehaviour
   public CinemachineFreeLook cam;
   private float[] startOrbits = new float[3], targetOrbits = new float[3];
   private float currentMultiplier = 1;
-  private bool godMode = false;
+  private bool godMode = false, inControl = true;
 
   //input settings
    [System.Serializable]
@@ -73,36 +73,42 @@ public class PlayerBehavior : MonoBehaviour
 
    private void Update()
    {
-      KeyCode[] combo = new[] { KeyCode.LeftControl, KeyCode.G };
-      if ((Input.GetKeyDown(KeyCode.LeftControl) && Input.GetKey(KeyCode.G)) ||
-          (Input.GetKeyDown(KeyCode.G) && Input.GetKey(KeyCode.LeftControl)))
+      if (inControl)
       {
-         if (godMode)
+         KeyCode[] combo = new[] { KeyCode.LeftControl, KeyCode.G };
+         if ((Input.GetKeyDown(KeyCode.LeftControl) && Input.GetKey(KeyCode.G)) ||
+             (Input.GetKeyDown(KeyCode.G) && Input.GetKey(KeyCode.LeftControl)))
          {
-            godMode = false;
-            playerRigidbody.useGravity = true;
+            if (godMode)
+            {
+               godMode = false;
+               playerRigidbody.useGravity = true;
+            }
+            else
+            {
+               godMode = true;
+               playerRigidbody.useGravity = false;
+            }
          }
-         else
-         {
-            godMode = true;
-            playerRigidbody.useGravity = false;
-         }
-      }
          
          
       
-      GetInput();
-      Turn();
-      ScrollCamera();
+         GetInput();
+         Turn();
+         ScrollCamera();
+      }
    }
 
    private void FixedUpdate()
    {
-      if(godMode)
-         Fly();
-      else
-         Jump();
-      Run();
+      if (inControl)
+      {
+         if(godMode)
+            Fly();
+         else
+            Jump();
+         Run();
+      }
    }
 
    private void GetInput()
@@ -168,6 +174,15 @@ public class PlayerBehavior : MonoBehaviour
          playerRigidbody.velocity = transform.TransformDirection(new Vector3(0, playerRigidbody.velocity.y, 0));
       }
       
+   }
+
+   // allows to disable/enable the control over the player
+   //the Camera Cinemachine FreeLook Gameobject will be disabled so that the camera can be used
+   public void changePlayerControl(bool state)
+   {
+      inControl = state;
+      cam.gameObject.SetActive(state);
+      playerRigidbody.useGravity = state;
    }
 
    private void Fly()
