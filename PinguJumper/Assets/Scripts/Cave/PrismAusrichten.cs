@@ -14,7 +14,7 @@ public class PrismAusrichten : MonoBehaviour
     [SerializeField]private bool origin;
     [SerializeField]private LineRenderer energyStrahl;
     [SerializeField] private Transform orientation;
-    public float maxDistance = 100;
+    public float maxDistance = 300;
     private PrismAusrichten anotherPrism;
 
     private void Awake()
@@ -52,7 +52,7 @@ public class PrismAusrichten : MonoBehaviour
     {
         energyStrahl.enabled = true;
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, orientation.position - transform.position, out hit,maxDistance))
+        if (Physics.Raycast(transform.position, orientation.position - transform.position, out hit, maxDistance))
         {
             //hits smth
             if (hit.collider.CompareTag("Prism"))
@@ -61,6 +61,12 @@ public class PrismAusrichten : MonoBehaviour
                 anotherPrism = hit.collider.GetComponent<PrismAusrichten>();
                 if(!anotherPrism.origin)
                     anotherPrism.CastRay();
+            }
+            else if(hit.collider.CompareTag("door"))
+            {
+                hit.collider.GetComponent<doorP>().melt();
+                anotherPrism = null;
+                energyStrahl.SetPositions(new Vector3[]{transform.position, hit.point});
             }
             else
             {
@@ -81,7 +87,7 @@ public class PrismAusrichten : MonoBehaviour
                 anotherPrism = null;
             }
             anotherPrism = null;
-            energyStrahl.SetPositions(new Vector3[]{transform.position, (orientation.position - transform.position).normalized * maxDistance});
+            energyStrahl.SetPositions(new Vector3[]{transform.position, (orientation.position - transform.position).normalized * maxDistance + transform.position});
         }
         
     }

@@ -7,16 +7,13 @@ public class MirrorForPlayer : MonoBehaviour
     private int mirrorCount;
     [SerializeField]private List<GameObject> playerMirrors;
 
-    public bool RequestMirror()
+    public void RequestMirror()
     {
         if (mirrorCount > 0)
         {
             mirrorCount--;
             UpdateMirrorCountOnPlayer();
-            return true;
         }
-        else
-            return false;
     }
 
     public void AddMirror()
@@ -31,5 +28,10 @@ public class MirrorForPlayer : MonoBehaviour
         {
             playerMirrors[i].SetActive(mirrorCount - i > 0 ? true : false);
         }
+    }
+
+    public bool hasMirror()
+    {
+        return mirrorCount != 0;
     }
 }
