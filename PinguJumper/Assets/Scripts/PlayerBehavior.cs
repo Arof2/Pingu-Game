@@ -4,22 +4,28 @@ using System.Collections.Generic;
 using System.Security.Cryptography;
 using Cinemachine;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class PlayerBehavior : MonoBehaviour
 {
   [SerializeField] private InputSettings inSettings;
   [SerializeField] private MovementSettings movSettings;
   [SerializeField] private Transform spawnpoint;
+  [SerializeField] private GameObject uiOveraly;
+  [SerializeField] private Slider sensitivitySlider;
+  [SerializeField] private TextMeshProUGUI sensitivitySliderValueDisplay;
   private Rigidbody playerRigidbody;
   private Vector3 velocity;
   private Quaternion targetRotation;
-  public float forwardInput, sidwaysInput, turnInput, jumpInput, scrollInput, downwardInput;
+  private float forwardInput, sidwaysInput, turnInput, jumpInput, scrollInput, downwardInput;
   private Vector3 baseScale, direction;
   private float turnSmoothVelocity;
   public CinemachineFreeLook cam;
   private float[] startOrbits = new float[3], targetOrbits = new float[3];
+  private float startSensitivityAxisY, startSensitivityAxisX;
   private float currentMultiplier = 1;
-  private bool godMode = false, inControl = true;
+  private bool godMode = false, inControl = true, mouseSettings = false;
 
   //input settings
    [System.Serializable]
@@ -68,11 +74,34 @@ public class PlayerBehavior : MonoBehaviour
          startOrbits[i] = cam.m_Orbits[i].m_Radius;
          targetOrbits[i] = cam.m_Orbits[i].m_Radius;
       }
+
+      startSensitivityAxisY = cam.m_YAxis.m_MaxSpeed;
+      startSensitivityAxisX = cam.m_XAxis.m_MaxSpeed;
+   }
+
+   private void ChangeOrbitSpeed(float range)
+   {
+      float val = range + 0.25f;
+      cam.m_XAxis.m_MaxSpeed = startSensitivityAxisX * val;
+      cam.m_YAxis.m_MaxSpeed = startSensitivityAxisY * val;
    }
 
 
    private void Update()
    {
+      if (Input.GetKeyDown(KeyCode.Escape))
+      {
+         changePlayerControl(mouseSettings,mouseSettings, !mouseSettings);
+         uiOveraly.SetActive(!mouseSettings);
+         mouseSettings = !mouseSettings;
+      }
+
+      if (mouseSettings)
+      {
+         ChangeOrbitSpeed(sensitivitySlider.value);
+         sensitivitySliderValueDisplay.text = Mathf.Round(((sensitivitySlider.value + 0.25f) * 100)) + "%";
+      }
+
       if (inControl)
       {
          KeyCode[] combo = new[] { KeyCode.LeftControl, KeyCode.G };
@@ -178,11 +207,11 @@ public class PlayerBehavior : MonoBehaviour
 
    // allows to disable/enable the control over the player
    //the Camera Cinemachine FreeLook Gameobject will be disabled so that the camera can be used
-   public void changePlayerControl(bool state)
+   public void changePlayerControl(bool playerControls = true, bool freecam = true, bool kinemtatic = true)
    {
-      inControl = state;
-      cam.gameObject.SetActive(state);
-      playerRigidbody.isKinematic = !state;
+      inControl = playerControls;
+      cam.gameObject.SetActive(freecam);
+      playerRigidbody.isKinematic = kinemtatic;
    }
 
    private void Fly()

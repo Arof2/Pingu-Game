@@ -38,7 +38,7 @@ public class PrismAusrichten : MonoBehaviour
             AusrichtungStarten();
         }
         
-        if (ausrichten && Input.GetKeyDown(KeyCode.Escape))
+        if (ausrichten && Input.GetKeyDown(KeyCode.Q))
         {
             AusrichtungStoppen();
         }
@@ -106,7 +106,7 @@ public class PrismAusrichten : MonoBehaviour
     {
         StopRay();
         ausrichten = true;
-        player.changePlayerControl(false);
+        player.changePlayerControl(false,false,true);
         rendere.enabled = false;
         text.SetActive(false);
         cam.transform.position = transform.position;
@@ -118,7 +118,7 @@ public class PrismAusrichten : MonoBehaviour
     {
         ausrichten = false;
         overlay.SetActive(false);
-        player.changePlayerControl(true);
+        player.changePlayerControl(true,true,false);
         text.SetActive(true);
         rendere.enabled = true;
         transform.rotation = Quaternion.Euler(0,cam.transform.eulerAngles.y + 90, cam.transform.eulerAngles.x);
