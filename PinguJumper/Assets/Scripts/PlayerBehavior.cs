@@ -11,7 +11,7 @@ using UnityEngine.SceneManagement;
 public class PlayerBehavior : MonoBehaviour
 {
   [SerializeField] private InputSettings inSettings;
-  [SerializeField] private MovementSettings movSettings;
+  [SerializeField] public MovementSettings movSettings;
   [SerializeField] private Transform spawnpoint;
   [SerializeField] private GameObject uiOveraly;
   [SerializeField] private Slider sensitivitySlider;
