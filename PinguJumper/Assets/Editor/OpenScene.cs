@@ -19,4 +19,11 @@ public class OpenScene
         EditorSceneManager.OpenScene("Assets/Scenes/Level 2.unity");
     }
     
+    [MenuItem("Open Scene/Main Hub %#&1")]
+    private static void MainHub()
+    {
+        EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo();
+        EditorSceneManager.OpenScene("Assets/Scenes/Main_HUB.unity");
+    }
+    
 }

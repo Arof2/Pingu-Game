@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/IceCaveLevel/Cave.unity
     guid: 4bf0cf1edea4b3044885044d865cf73f
+  - enabled: 1
+    path: Assets/Scenes/Main_HUB.unity
+    guid: 83770f459a3641d469512bb3a2010626
+  - enabled: 1
+    path: Assets/Scenes/Level 2.unity
+    guid: c9dc53cb5ee651848959ea6b6dcb8451
   m_configObjects: {}

@@ -6,6 +6,7 @@ using Cinemachine;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class PlayerBehavior : MonoBehaviour
 {
@@ -86,6 +87,10 @@ public class PlayerBehavior : MonoBehaviour
       cam.m_YAxis.m_MaxSpeed = startSensitivityAxisY * val;
    }
 
+   public void returnToHub()
+   {
+      SceneManager.LoadScene("Main_HUB");
+   }
 
    private void Update()
    {

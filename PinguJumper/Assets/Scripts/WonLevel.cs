@@ -50,11 +50,7 @@ public class WonLevel : MonoBehaviour
             //Save Playsave if currently recording
             gostPlayer.GetComponent<GostPlayer>().SaveRecording();
             //Change to HUB
-            // SceneManager.LoadScene();
-
-
-
-
+            SceneManager.LoadScene("Main_HUB");
         }
         
     }
@@ -70,6 +66,9 @@ public class WonLevel : MonoBehaviour
            // player.GetComponent<Rigidbody>().useGravity = false;
             animatedPlayer.GetComponent<PlayerAnimation>().enabled = false;
             animatedPlayer.GetComponent<Animator>().SetTrigger("Trigger_Excited");
+            CheckforWin win = GameObject.FindObjectOfType<CheckforWin>();
+            if(win)
+                win.wonLevel();
             triggered = true;
         }
     }
