@@ -33,7 +33,7 @@ public class PrismAusrichten : MonoBehaviour
             CastRay();
         }
 
-        if (nearEnough && Input.GetKeyDown(KeyCode.E) && !ausrichten)
+        if (nearEnough && Input.GetKeyDown(KeyCode.F) && !ausrichten)
         {
             AusrichtungStarten();
         }

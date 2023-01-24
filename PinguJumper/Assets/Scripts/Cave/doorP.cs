@@ -17,12 +17,14 @@ public class doorP : MonoBehaviour
 
     public void melt()
     {
+        Debug.Log(rend.material.color.a);
         Material mat = rend.material;
         rend.material.color = Color.Lerp(mat.color,
             new Color(mat.color.r, mat.color.g, mat.color.b, 0),
-            Time.deltaTime * 5);
+            Time.deltaTime * speed);
 
-        if (rend.material.color.a < 5)
+        Debug.Log(rend.material.color.a);
+        if (rend.material.color.a < 0.05f)
         {
             gameObject.SetActive(false);
         }

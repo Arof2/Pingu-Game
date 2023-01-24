@@ -19,11 +19,18 @@ public class OpenScene
         EditorSceneManager.OpenScene("Assets/Scenes/Level 2.unity");
     }
     
-    [MenuItem("Open Scene/Main Hub %#&1")]
+    [MenuItem("Open Scene/Main Hub %#&2")]
     private static void MainHub()
     {
         EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo();
         EditorSceneManager.OpenScene("Assets/Scenes/Main_HUB.unity");
     }
+    
+    [MenuItem("Open Scene/Cave %#&3")]
+        private static void Cave()
+        {
+            EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo();
+            EditorSceneManager.OpenScene("Assets/Scenes/IceCaveLevel/Cave.unity");
+        }
     
 }
