@@ -7,11 +7,19 @@ using UnityEngine.SceneManagement;
 public class LoadSceneOnTrigger : MonoBehaviour
 {
     [SerializeField]private String sceneToLoad;
+    [SerializeField] private Boolean exit; 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.GetComponent<PlayerBehavior>())
         {
-            SceneManager.LoadScene(sceneToLoad);
+            if (!exit)
+            {
+                SceneManager.LoadScene(sceneToLoad);
+            }
+            else
+            {
+                Application.Quit();
+            }
         }
     }
 }
