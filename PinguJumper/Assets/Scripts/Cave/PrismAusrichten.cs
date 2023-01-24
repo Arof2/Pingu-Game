@@ -16,6 +16,7 @@ public class PrismAusrichten : MonoBehaviour
     [SerializeField] private Transform orientation;
     public float maxDistance = 300;
     private PrismAusrichten anotherPrism;
+    private doorP lastDoor;
 
     private void Awake()
     {
@@ -64,6 +65,7 @@ public class PrismAusrichten : MonoBehaviour
             }
             else if(hit.collider.CompareTag("door"))
             {
+                lastDoor = hit.collider.GetComponent<doorP>();
                 hit.collider.GetComponent<doorP>().melt();
                 anotherPrism = null;
                 energyStrahl.SetPositions(new Vector3[]{transform.position, hit.point});
@@ -74,6 +76,12 @@ public class PrismAusrichten : MonoBehaviour
                 {
                     anotherPrism.StopRay();
                     anotherPrism = null;
+                }
+
+                if (lastDoor != null)
+                {
+                    lastDoor.StopParts();
+                    lastDoor = null;
                 }
                 anotherPrism = null;
                 energyStrahl.SetPositions(new Vector3[]{transform.position, hit.point});

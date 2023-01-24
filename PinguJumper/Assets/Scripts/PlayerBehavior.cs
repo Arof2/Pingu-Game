@@ -27,6 +27,7 @@ public class PlayerBehavior : MonoBehaviour
   private float startSensitivityAxisY, startSensitivityAxisX;
   private float currentMultiplier = 1;
   private bool godMode = false, inControl = true, mouseSettings = false;
+  private float lastMouseSpeed;
 
   //input settings
    [System.Serializable]
@@ -85,6 +86,7 @@ public class PlayerBehavior : MonoBehaviour
       float val = range + 0.25f;
       cam.m_XAxis.m_MaxSpeed = startSensitivityAxisX * val;
       cam.m_YAxis.m_MaxSpeed = startSensitivityAxisY * val;
+      lastMouseSpeed = range;
    }
 
    public void returnToHub()
@@ -297,5 +299,17 @@ public class PlayerBehavior : MonoBehaviour
       {
          Spawn();
       }
+   }
+
+   private void OnEnable()
+   {
+      lastMouseSpeed = float.Parse(PlayerPrefs.GetString("MouseSpeed", "0,75"));
+      ChangeOrbitSpeed(lastMouseSpeed);
+      sensitivitySlider.value = lastMouseSpeed;
+   }
+
+   private void OnDestroy()
+   {
+      PlayerPrefs.SetString("MouseSpeed", lastMouseSpeed.ToString());
    }
 }
