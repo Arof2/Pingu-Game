@@ -59,7 +59,7 @@ public class WonLevel : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            
+            gostPlayer.GetComponent<GostPlayer>().DoShowGost(false);
             playercamera.GetComponent<CinemachineBrain>().enabled = false;
             player.GetComponent<PlayerBehavior>().enabled = false;
             player.GetComponent<Rigidbody>().isKinematic = true;
