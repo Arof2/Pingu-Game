@@ -14,6 +14,7 @@ public class PrismAusrichten : MonoBehaviour
     [SerializeField]private bool origin;
     [SerializeField]private LineRenderer energyStrahl;
     [SerializeField] private Transform orientation;
+    [SerializeField] private ParticleSystem onInput;
     public float maxDistance = 300;
     private PrismAusrichten anotherPrism;
     private doorP lastDoor;
@@ -25,6 +26,7 @@ public class PrismAusrichten : MonoBehaviour
         rendere = gameObject.GetComponent<MeshRenderer>();
         cam = Camera.main.gameObject;
         overlay.SetActive(false);
+        onInput.Stop();
     }
 
     public void Update()
@@ -62,6 +64,9 @@ public class PrismAusrichten : MonoBehaviour
                 anotherPrism = hit.collider.GetComponent<PrismAusrichten>();
                 if(!anotherPrism.origin)
                     anotherPrism.CastRay();
+                
+                if(onInput.isPlaying)
+                    onInput.Stop();
             }
             else if(hit.collider.CompareTag("door"))
             {
@@ -69,6 +74,12 @@ public class PrismAusrichten : MonoBehaviour
                 hit.collider.GetComponent<doorP>().melt();
                 anotherPrism = null;
                 energyStrahl.SetPositions(new Vector3[]{transform.position, hit.point});
+
+                if (!onInput.isPlaying)
+                {
+                    onInput.gameObject.transform.position = hit.point;
+                    onInput.Play();
+                }
             }
             else
             {
@@ -85,6 +96,12 @@ public class PrismAusrichten : MonoBehaviour
                 }
                 anotherPrism = null;
                 energyStrahl.SetPositions(new Vector3[]{transform.position, hit.point});
+                
+                if (!onInput.isPlaying)
+                {
+                    onInput.gameObject.transform.position = hit.point;
+                    onInput.Play();
+                }
             }
         }
         else
@@ -96,6 +113,9 @@ public class PrismAusrichten : MonoBehaviour
             }
             anotherPrism = null;
             energyStrahl.SetPositions(new Vector3[]{transform.position, (orientation.position - transform.position).normalized * maxDistance + transform.position});
+            
+            if(onInput.isPlaying)
+                onInput.Stop();
         }
         
     }
