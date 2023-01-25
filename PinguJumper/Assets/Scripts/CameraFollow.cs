@@ -1,18 +1,20 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    [SerializeField] private Transform followdObject;
-    [SerializeField] private float smooth = 0f;
-    [SerializeField] private float distanceAway, distanceUp;
+    [SerializeField]private Transform followedObject;
+    public float distanceAway;
+    public float distanceUp;
+    public float smooth;
     
-    void Update()
-    {
-        Vector3 nPosition = followdObject.position + (-followdObject.forward * distanceAway) + (followdObject.up * distanceUp);
 
-        transform.position = Vector3.Lerp(transform.position, nPosition, smooth * Time.deltaTime);
-       transform.LookAt((followdObject));
+    private void LateUpdate()
+    {
+        var toPosition = followedObject.position - followedObject.forward * distanceAway + followedObject.up * distanceUp;
+        transform.position = Vector3.Lerp(transform.position, toPosition, smooth * Time.deltaTime);
+        transform.LookAt(followedObject);
     }
 }

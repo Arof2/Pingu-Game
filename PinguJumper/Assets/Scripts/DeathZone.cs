@@ -5,10 +5,9 @@ using UnityEngine;
 
 public class DeathZone : MonoBehaviour
 {
-
+    // Start is called before the first frame update
     private void OnDrawGizmos()
     {
-       Gizmos.DrawIcon(transform.position,"deathzone" );
+        Gizmos.DrawIcon(transform.position,"deathzone");
     }
-    
 }

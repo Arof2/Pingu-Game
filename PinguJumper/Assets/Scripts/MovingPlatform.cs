@@ -1,45 +1,45 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.UIElements;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class MovingPlatform : MonoBehaviour
 {
-    [SerializeField] private Vector3 startPosition;
-    [SerializeField] private Vector3 endPosition;
-
-    [SerializeField] private float speed;
-    private bool toEnd;
+    public Vector3 endPosition;
+    private Vector3 startPosition;
+    public float speed;
+    private bool toEnd = true;
+    
+    
     
     // Start is called before the first frame update
     void Start()
     {
-        startPosition = transform.position;
-        toEnd = true;
+        startPosition=transform.position;
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
-        Vector3 nextPosition = toEnd ? startPosition + endPosition : startPosition;
-        Vector3 amtMove = (nextPosition - transform.position).normalized;
-        amtMove *= Time.deltaTime * speed;
-        transform.Translate(amtMove, Space.World);
-
-        if(Vector3. Distance(nextPosition, transform.position)<amtMove.magnitude)
-        toEnd = !toEnd;
+        var nextPosition = toEnd ? startPosition + endPosition : startPosition;
+        transform.position = Vector3.MoveTowards(transform.position, nextPosition, speed * Time.deltaTime);
+        if (transform.position.Equals(nextPosition))
+        {
+            toEnd = !toEnd;
+        }
     }
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.red;
+        Gizmos.color= Color.red;
         if (Application.isPlaying)
         {
-            Gizmos.DrawLine(startPosition, startPosition+endPosition);
+            Gizmos.DrawLine(startPosition,startPosition+endPosition);
         }
         else
         {
-            Gizmos.DrawLine(transform.position,transform.position + endPosition);
+            Gizmos.DrawLine(transform.position,transform.position+endPosition);
         }
     }
 }
