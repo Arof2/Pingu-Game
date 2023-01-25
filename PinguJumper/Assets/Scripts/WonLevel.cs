@@ -48,7 +48,8 @@ public class WonLevel : MonoBehaviour
         if (timer <= 0.0f)
         {
             //Save Playsave if currently recording
-            gostPlayer.GetComponent<GostPlayer>().SaveRecording();
+            if(gostPlayer != null) //In case there is no ghostPlayer like in the cave level
+                gostPlayer.GetComponent<GostPlayer>().SaveRecording();
             //Change to HUB
             SceneManager.LoadScene("Main_HUB");
         }
@@ -59,7 +60,8 @@ public class WonLevel : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            gostPlayer.GetComponent<GostPlayer>().DoShowGost(false);
+            if(gostPlayer != null) //In case there is no ghostPlayer like in the cave level
+                gostPlayer.GetComponent<GostPlayer>().DoShowGost(false);
             playercamera.GetComponent<CinemachineBrain>().enabled = false;
             player.GetComponent<PlayerBehavior>().enabled = false;
             player.GetComponent<Rigidbody>().isKinematic = true;

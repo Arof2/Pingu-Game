@@ -26,7 +26,7 @@ public class doorP : MonoBehaviour
             new Color(mat.color.r, mat.color.g, mat.color.b, 0),
             Time.deltaTime * speed);
 
-        Debug.Log(rend.material.color.a);
+        //Debug.Log(rend.material.color.a);
         if (rend.material.color.a < 0.05f)
         {
             gameObject.SetActive(false);

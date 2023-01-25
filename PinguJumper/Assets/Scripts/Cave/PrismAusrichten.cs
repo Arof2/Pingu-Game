@@ -15,7 +15,7 @@ public class PrismAusrichten : MonoBehaviour
     [SerializeField]private LineRenderer energyStrahl;
     [SerializeField] private Transform orientation;
     [SerializeField] private ParticleSystem onInput;
-    public float maxDistance = 300;
+    public float maxDistance = 500;
     private PrismAusrichten anotherPrism;
     private doorP lastDoor;
 
@@ -41,7 +41,7 @@ public class PrismAusrichten : MonoBehaviour
             AusrichtungStarten();
         }
         
-        if (ausrichten && Input.GetKeyDown(KeyCode.Q))
+        if (ausrichten && (Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.Escape)))
         {
             AusrichtungStoppen();
         }
@@ -80,6 +80,7 @@ public class PrismAusrichten : MonoBehaviour
                     onInput.gameObject.transform.position = hit.point;
                     onInput.Play();
                 }
+                
             }
             else
             {
@@ -99,9 +100,9 @@ public class PrismAusrichten : MonoBehaviour
                 
                 if (!onInput.isPlaying)
                 {
-                    onInput.gameObject.transform.position = hit.point;
                     onInput.Play();
                 }
+                onInput.gameObject.transform.position = hit.point;
             }
         }
         else
@@ -128,6 +129,14 @@ public class PrismAusrichten : MonoBehaviour
             anotherPrism.StopRay();
             anotherPrism = null;
         }
+        
+        if (lastDoor != null)
+        {
+            lastDoor.StopParts();
+            lastDoor = null;
+        }
+        
+        onInput.Stop();
     }
 
     public void AusrichtungStarten()
