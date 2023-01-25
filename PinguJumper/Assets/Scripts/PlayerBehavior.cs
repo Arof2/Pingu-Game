@@ -19,7 +19,7 @@ public class PlayerBehavior : MonoBehaviour
   private Rigidbody playerRigidbody;
   private Vector3 velocity;
   private Quaternion targetRotation;
-  private float forwardInput, sidwaysInput, turnInput, jumpInput, scrollInput, downwardInput;
+  public float forwardInput, sidwaysInput, turnInput, jumpInput, scrollInput, downwardInput;
   private Vector3 baseScale, direction;
   private float turnSmoothVelocity;
   public CinemachineFreeLook cam;
@@ -54,7 +54,6 @@ public class PlayerBehavior : MonoBehaviour
       public float zoomIn = 0.8f;
       [Range(1f, 3f)]
       public float zoomOut = 2f;
-
       public float zoomStepSize = 0.1f;
       public LayerMask ground;
    }
@@ -126,9 +125,6 @@ public class PlayerBehavior : MonoBehaviour
                playerRigidbody.useGravity = false;
             }
          }
-         
-         
-      
          GetInput();
          Turn();
          ScrollCamera();
@@ -147,7 +143,7 @@ public class PlayerBehavior : MonoBehaviour
       }
    }
 
-   private void GetInput()
+   public void GetInput()
    {
       forwardInput = -Input.GetAxisRaw(inSettings.FORWARD_AXIS);
       sidwaysInput = Input.GetAxisRaw(inSettings.SIDEWAYS_AXIS);
