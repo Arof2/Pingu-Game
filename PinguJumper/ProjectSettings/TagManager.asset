@@ -9,6 +9,9 @@ TagManager:
   - Prism
   - door
   - SlidingSurface
+  - InvisiplePlattform
+  - Ice
+  - InvisiblePlattform
   layers:
   - Default
   - TransparentFX

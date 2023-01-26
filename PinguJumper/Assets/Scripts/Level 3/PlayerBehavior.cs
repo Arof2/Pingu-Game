@@ -264,6 +264,10 @@ public class PlayerBehavior : MonoBehaviour
          G.transform.SetParent(other.transform.parent.transform, true);
          transform.SetParent(G.transform,false);
       }
+      if (other.gameObject.CompareTag("InvisiblePlattform"))
+      {
+         other.gameObject.GetComponent<IceCubePlattforms>().changeVisibilityPermenantly();
+      }
    }
    private void OnCollisionExit(Collision other)
    {
@@ -294,6 +298,25 @@ public class PlayerBehavior : MonoBehaviour
       if (other.CompareTag("DeathZone"))
       {
          Spawn();
+      }
+
+      if (other.CompareTag("Ice"))
+      {
+         foreach(IceCubePlattforms plattform in FindObjectsOfType<IceCubePlattforms>())
+         {
+            plattform.changeVisibilityTemp(true);
+         }
+      }
+   }
+
+   private void OnTriggerExit(Collider other)
+   {
+      if (other.CompareTag("Ice"))
+      {
+         foreach(IceCubePlattforms plattform in FindObjectsOfType<IceCubePlattforms>())
+         {
+            plattform.changeVisibilityTemp(false);
+         }
       }
    }
 
