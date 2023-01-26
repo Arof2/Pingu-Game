@@ -12,6 +12,7 @@ TagManager:
   - InvisiplePlattform
   - Ice
   - InvisiblePlattform
+  - geneigtePlattforms
   layers:
   - Default
   - TransparentFX
