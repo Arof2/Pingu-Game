@@ -12,7 +12,9 @@ public class PlayerBehavior : MonoBehaviour
 {
   [SerializeField] private InputSettings inSettings;
   [SerializeField] public MovementSettings movSettings;
-  [SerializeField] private Transform spawnpoint;
+  [SerializeField] private Transform spawnpoint1;
+  [SerializeField] private Transform spawnpoint2;//only needed in level 3, just put your normal spawnpoint here
+  [SerializeField] private Transform spawnpoint3;//only needed in level 3, just put your normal spawnpoint here
   [SerializeField] private GameObject uiOveraly;
   [SerializeField] private Slider sensitivitySlider;
   [SerializeField] private TextMeshProUGUI sensitivitySliderValueDisplay;
@@ -28,6 +30,8 @@ public class PlayerBehavior : MonoBehaviour
   private float currentMultiplier = 1;
   private bool godMode = false, inControl = true, mouseSettings = false;
   private float lastMouseSpeed;
+  private Transform spawnpoint;
+  private int spawnState = 0;
 
   //input settings
    [System.Serializable]
@@ -78,6 +82,7 @@ public class PlayerBehavior : MonoBehaviour
 
       startSensitivityAxisY = cam.m_YAxis.m_MaxSpeed;
       startSensitivityAxisX = cam.m_XAxis.m_MaxSpeed;
+      spawnpoint = spawnpoint1;
    }
 
    private void ChangeOrbitSpeed(float range)
@@ -266,7 +271,18 @@ public class PlayerBehavior : MonoBehaviour
       }
       if (other.gameObject.CompareTag("InvisiblePlattform"))
       {
-         other.gameObject.GetComponent<IceCubePlattforms>().changeVisibilityPermenantly();
+         other.gameObject.GetComponent<IceCubePlattforms>().changeVisibilityPermenantly(true);
+      }
+
+      if (other.gameObject.CompareTag("IceBoxPlattform"))
+      {
+         changeSpawnPoint(spawnpoint2);
+         spawnState = 2;
+      }
+      if (other.gameObject.CompareTag("visiblePlattform"))
+      {
+         changeSpawnPoint(spawnpoint3);
+         spawnState = 3;
       }
    }
    private void OnCollisionExit(Collision other)
@@ -290,7 +306,28 @@ public class PlayerBehavior : MonoBehaviour
 
    public void Spawn()
    {
+      if (spawnState == 2)
+      {
+         FindObjectOfType<IceBox>().Spawn();
+      }
+
+      if (spawnState == 3)
+      {
+         foreach (IceCubePlattforms i in FindObjectsOfType<IceCubePlattforms>())
+         {
+            if (i.CompareTag("InvisiblePlattform"))
+            {
+               i.changeVisibilityPermenantly(false);
+            }
+         }
+      }
+
       transform.position = spawnpoint.position;
+   }
+   
+   public void changeSpawnPoint(Transform spawn)
+   {
+      spawnpoint= spawn;
    }
 
    private void OnTriggerEnter(Collider other)

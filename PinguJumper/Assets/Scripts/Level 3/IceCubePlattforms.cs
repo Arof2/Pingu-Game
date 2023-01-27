@@ -22,11 +22,12 @@ public class IceCubePlattforms : MonoBehaviour
         throw new NotImplementedException();
     }
 
-    public void changeVisibilityPermenantly()
+    public void changeVisibilityPermenantly(bool permenant)
     {
-        GetComponent<Renderer>().enabled = true;
-        GetComponentInChildren<Renderer>().enabled = true;
-        permenantlyVisible = true;
+        permenantlyVisible = permenant;
+        GetComponent<Renderer>().enabled = permenantlyVisible;
+        GetComponentsInChildren<Renderer>()[1].enabled = permenantlyVisible;
+        
     }
 
     public void changeVisibilityTemp(bool visible)
@@ -46,5 +47,4 @@ public class IceCubePlattforms : MonoBehaviour
             }
         }
     }
-    
 }

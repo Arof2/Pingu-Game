@@ -13,6 +13,8 @@ TagManager:
   - InvisiblePlattform
   - geneigtePlattforms
   - IceBox
+  - visiblePlattform
+  - IceBoxPlattform
   layers:
   - Default
   - TransparentFX
