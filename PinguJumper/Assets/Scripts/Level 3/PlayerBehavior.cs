@@ -250,6 +250,12 @@ public class PlayerBehavior : MonoBehaviour
       }
    }
 
+    public void Quit()
+    {
+        Debug.Log("Quitting");
+        Application.Quit();
+    }
+
    private bool Grounded()
    {
       return Physics.Raycast(transform.position, Vector3.down, movSettings.distanceToGround, movSettings.ground);
