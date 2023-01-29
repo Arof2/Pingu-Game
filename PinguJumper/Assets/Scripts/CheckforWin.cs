@@ -10,10 +10,17 @@ public class CheckforWin : MonoBehaviour
     // Start is called before the first frame update
     private bool wonThisLevel = false;
     private String current;
+    public static CheckforWin instance;
     void Start()
     {
-        //Debug.Log("Saved");
-        DontDestroyOnLoad(this);
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(this);
+        }
+        else
+            Destroy(this);
+        
     }
 
     private void OnEnable()
