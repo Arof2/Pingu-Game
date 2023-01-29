@@ -15,22 +15,9 @@ public class IceBox : MonoBehaviour
     // Update is called once per frame
     private void OnTriggerEnter(Collider other)
     {
-        if (gameObject.CompareTag("DeathZone"))
+        if (other.CompareTag("DeathZone"))
         {
             Spawn();
         }
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (gameObject.CompareTag("DeathZone"))
-        {
-            Spawn();
-        }
-    }
-
-    private void OnBecameInvisible()
-    {
-        Spawn();
     }
 }
