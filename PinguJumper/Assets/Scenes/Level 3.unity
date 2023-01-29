@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 19439621}
   m_Layer: 0
   m_Name: Flat Plattform example (1)
-  m_TagString: Untagged
+  m_TagString: IceBoxPlattform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -721,7 +721,6 @@ GameObject:
   - component: {fileID: 194720559}
   - component: {fileID: 194720563}
   - component: {fileID: 194720565}
-  - component: {fileID: 194720564}
   m_Layer: 0
   m_Name: IceBox
   m_TagString: IceBox
@@ -823,19 +822,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &194720564
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 194720558}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4bcfda656d7a9f444b08fd42123c40ac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawn: {fileID: 874475660}
 --- !u!114 &194720565
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -946,6 +932,18 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 289301614986012343, guid: 2093fc8835743a64e8e3e7627a7fdb79, type: 3}
+--- !u!114 &301139569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 301139565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bae83640af34ae489e2824568624ac2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &359961141
 GameObject:
   m_ObjectHideFlags: 0
@@ -1933,6 +1931,18 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -5495902117074765545, guid: 79f9f602773d4374aa504e6b6914ef97, type: 3}
+--- !u!114 &667281936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 667281932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bae83640af34ae489e2824568624ac2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &700859642 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1303969157247501749, guid: b41d16080ad5675449a903c13e36508d, type: 3}
@@ -2505,6 +2515,18 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -5495902117074765545, guid: 79f9f602773d4374aa504e6b6914ef97, type: 3}
+--- !u!114 &933813898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 933813894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bae83640af34ae489e2824568624ac2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &935168927
 GameObject:
   m_ObjectHideFlags: 0
@@ -4053,6 +4075,18 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -5495902117074765545, guid: 79f9f602773d4374aa504e6b6914ef97, type: 3}
+--- !u!114 &1246959768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1246959764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bae83640af34ae489e2824568624ac2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1300881056
 GameObject:
   m_ObjectHideFlags: 0
@@ -4245,6 +4279,18 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -5495902117074765545, guid: 79f9f602773d4374aa504e6b6914ef97, type: 3}
+--- !u!114 &1357330703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1357330699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bae83640af34ae489e2824568624ac2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1431410215
 GameObject:
   m_ObjectHideFlags: 0
@@ -4684,9 +4730,11 @@ GameObject:
   - component: {fileID: 1647499607}
   - component: {fileID: 1647499606}
   - component: {fileID: 1647499605}
+  - component: {fileID: 1647499608}
+  - component: {fileID: 1647499609}
   m_Layer: 0
   m_Name: Flat Plattform example (1)
-  m_TagString: Untagged
+  m_TagString: visiblePlattform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4770,6 +4818,30 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1647499603}
   m_Mesh: {fileID: -2013425499162081514, guid: bfa4f1f510a32994f977722080805b4b, type: 3}
+--- !u!114 &1647499608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1647499603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bae83640af34ae489e2824568624ac2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1647499609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1647499603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd777896707c20b4ba04714db44289da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1659573385
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5241,7 +5313,7 @@ PrefabInstance:
     - target: {fileID: 2464676662194109149, guid: 7b477f2765df7e24585c9a28a0d32031, type: 3}
       propertyPath: spawnpoint1
       value: 
-      objectReference: {fileID: 730147421}
+      objectReference: {fileID: 1753699540}
     - target: {fileID: 2464676662194109149, guid: 7b477f2765df7e24585c9a28a0d32031, type: 3}
       propertyPath: spawnpoint2
       value: 
@@ -5839,6 +5911,18 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -5495902117074765545, guid: 79f9f602773d4374aa504e6b6914ef97, type: 3}
+--- !u!114 &1970467046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1970467042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bae83640af34ae489e2824568624ac2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1976889879
 GameObject:
   m_ObjectHideFlags: 0
