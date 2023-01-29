@@ -252,7 +252,7 @@ public class PlayerBehavior : MonoBehaviour
 
     public void Quit()
     {
-        Debug.Log("Quitting");
+        //Debug.Log("Quitting");
         Application.Quit();
     }
 
