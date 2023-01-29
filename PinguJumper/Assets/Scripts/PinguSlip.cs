@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Numerics;
+using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.UI;
 using Quaternion = UnityEngine.Quaternion;
@@ -55,29 +56,26 @@ public class PinguSlip : MonoBehaviour
                 float angle = Vector3.Angle(hit.normal, Vector3.up);
                 Vector3 downDirection = Vector3.Cross(hit.normal, Vector3.Cross(Vector3.down, hit.normal));
                 RunAndSlide(downDirection, hit.normal);
-                if ((angle < 85 && angle > SlideAngle) ||
+                if ((angle < 90 && angle > SlideAngle) ||
                     (justSlide && playerRigidbody.velocity.magnitude > velotcityToStandUp && angle > 5))
                 {
-                    
+
                     playerRigidbody.velocity += downDirection.normalized * (angle * speed * Time.deltaTime);
                     if (playerRigidbody.velocity.magnitude > maxSpeed)
                     {
                         playerRigidbody.velocity = playerRigidbody.velocity.normalized * maxSpeed;
                     }
-                    
-                    
-                    justSlide = true;
-                    timer = airtime;
-                }
-                else
-                {
-                    collided = false;
+
                 }
 
+                justSlide = true;
+                timer = airtime;
             }
             else
             {
                 collided = false;
+                justSlide = true;
+                timer = airtime;
             }
         }
         else
@@ -100,7 +98,7 @@ public class PinguSlip : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-       if(other.gameObject.CompareTag("SlidingSurface"))
+        if(other.gameObject.CompareTag("SlidingSurface"))
        {
            collided = true;
            playerBehavior.changePlayerControl(false, true, false);
