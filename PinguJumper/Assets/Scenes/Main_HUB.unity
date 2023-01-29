@@ -892,11 +892,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2596037181234645576, guid: 8389668607fc51b46be100fbfa2b1255, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.051563893
+      value: 0.051563907
       objectReference: {fileID: 0}
     - target: {fileID: 2596037181234645576, guid: 8389668607fc51b46be100fbfa2b1255, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.007869214
+      value: 0.007869216
       objectReference: {fileID: 0}
     - target: {fileID: 2596037181234645576, guid: 8389668607fc51b46be100fbfa2b1255, type: 3}
       propertyPath: m_LocalRotation.y
@@ -2075,6 +2075,9 @@ MonoBehaviour:
     won: 0
   - levelName: Cave
     toBeActivated: {fileID: 309360581}
+    won: 0
+  - levelName: Level 3
+    toBeActivated: {fileID: 97988185}
     won: 0
 --- !u!4 &637292541
 Transform:
