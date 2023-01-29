@@ -1711,7 +1711,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2596037181234645576, guid: 8389668607fc51b46be100fbfa2b1255, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.10667711
+      value: -0.10667709
       objectReference: {fileID: 0}
     - target: {fileID: 2596037181234645576, guid: 8389668607fc51b46be100fbfa2b1255, type: 3}
       propertyPath: m_LocalRotation.y
@@ -1719,7 +1719,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2596037181234645576, guid: 8389668607fc51b46be100fbfa2b1255, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.10667711
+      value: 0.10667709
       objectReference: {fileID: 0}
     - target: {fileID: 2596037181554644184, guid: 8389668607fc51b46be100fbfa2b1255, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1747,7 +1747,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2596037181715091838, guid: 8389668607fc51b46be100fbfa2b1255, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.08121505
+      value: -0.081215054
       objectReference: {fileID: 0}
     - target: {fileID: 2596037181715091838, guid: 8389668607fc51b46be100fbfa2b1255, type: 3}
       propertyPath: m_LocalRotation.y
@@ -1755,10 +1755,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2596037181715091838, guid: 8389668607fc51b46be100fbfa2b1255, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.08121505
+      value: 0.081215054
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8389668607fc51b46be100fbfa2b1255, type: 3}
+--- !u!54 &1054893516 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 2596037180207682452, guid: 8389668607fc51b46be100fbfa2b1255, type: 3}
+  m_PrefabInstance: {fileID: 1054893515}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1138622506
 GameObject:
   m_ObjectHideFlags: 0
@@ -4357,7 +4362,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee068f09ae80cee4199ca01499dcbb64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerRigidbody: {fileID: 0}
+  playerRigidbody: {fileID: 1054893516}
   pinguRigidbody: {fileID: 416144640795603194}
   excitedDistance: 5
 --- !u!4 &519028084169991873

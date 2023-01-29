@@ -5353,7 +5353,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2464676662194109151, guid: 7b477f2765df7e24585c9a28a0d32031, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2464676662194109151, guid: 7b477f2765df7e24585c9a28a0d32031, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5481,6 +5481,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7b477f2765df7e24585c9a28a0d32031, type: 3}
+--- !u!54 &1859729364 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 2464676662194109148, guid: 7b477f2765df7e24585c9a28a0d32031, type: 3}
+  m_PrefabInstance: {fileID: 1859729363}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1863847918
 GameObject:
   m_ObjectHideFlags: 0
@@ -7060,7 +7065,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1261225869274579132, guid: dff2fd66abf11f34aacec27db60f84ea, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1261225869274579132, guid: dff2fd66abf11f34aacec27db60f84ea, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7757,7 +7762,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee068f09ae80cee4199ca01499dcbb64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerRigidbody: {fileID: 0}
+  playerRigidbody: {fileID: 1859729364}
   pinguRigidbody: {fileID: 8219224965087148949}
   excitedDistance: 10
 --- !u!4 &8219224965087148948
@@ -7774,7 +7779,7 @@ Transform:
   m_Children:
   - {fileID: 8134918869910302126}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!54 &8219224965087148949
 Rigidbody:
