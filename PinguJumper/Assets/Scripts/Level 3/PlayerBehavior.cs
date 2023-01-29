@@ -7,6 +7,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+using Unity.VisualScripting;
 
 public class PlayerBehavior : MonoBehaviour
 {
@@ -295,7 +296,7 @@ public class PlayerBehavior : MonoBehaviour
    {
       if (!other.gameObject.CompareTag("DontParent"))
       {
-         if (other.transform.parent.gameObject == transform.parent.parent.gameObject)
+         if (!other.transform.parent.gameObject.IsUnityNull() && other.transform.parent.gameObject == transform.parent.parent.gameObject)
          {
             GameObject G = transform.parent.gameObject;
             transform.SetParent(null);
