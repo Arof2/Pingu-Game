@@ -14,7 +14,7 @@ public class IceCubePlattforms : MonoBehaviour
     public void Start()
     {
         GetComponent<Renderer>().enabled = false;
-        GetComponentsInChildren<Renderer>()[1].enabled = false;
+        GetComponentsInChildren<Renderer>()[0].enabled = false;
     }
 
     private void OnTriggerEnter(Collider other)
