@@ -15,6 +15,7 @@ public class LostPinguAnimation : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         isHappy = false;
+        animator.SetTrigger("Trigger_Sad");
     }
 
 
