@@ -31,6 +31,7 @@ public class PlayerLIfe : MonoBehaviour
     {
         
         dead = true;
+        collect.coins = 0;
         Invoke(nameof(ReloadLevel), 1.3f);
         deathSound.Play();
     }
