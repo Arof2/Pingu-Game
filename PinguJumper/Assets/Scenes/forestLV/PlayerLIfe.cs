@@ -9,7 +9,7 @@ public class PlayerLIfe : MonoBehaviour
 
     void Update()
     {
-        if (transform.position.y < -2f && !dead)
+        if (transform.position.y < -1f && !dead)
         {
             Die();
         }
@@ -21,8 +21,7 @@ public class PlayerLIfe : MonoBehaviour
         {
            // GetComponent<MeshRenderer>().enabled = false;
             GetComponent<Rigidbody>().isKinematic = true;
-           GetComponent<PlayerMovSkript>().enabled = false;
-			GetComponent<PlayerBehavior>().enabled = false;
+            GetComponent<PlayerBehavior>().enabled = false;
             Die();
             
         }
