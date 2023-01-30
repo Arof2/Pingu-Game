@@ -1020,11 +1020,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2596037181234645576, guid: 8389668607fc51b46be100fbfa2b1255, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.051563893
+      value: 0.051563907
       objectReference: {fileID: 0}
     - target: {fileID: 2596037181234645576, guid: 8389668607fc51b46be100fbfa2b1255, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.007869214
+      value: 0.007869216
       objectReference: {fileID: 0}
     - target: {fileID: 2596037181234645576, guid: 8389668607fc51b46be100fbfa2b1255, type: 3}
       propertyPath: m_LocalRotation.y
@@ -1056,11 +1056,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2596037181715091838, guid: 8389668607fc51b46be100fbfa2b1255, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.051815704
+      value: 0.051815737
       objectReference: {fileID: 0}
     - target: {fileID: 2596037181715091838, guid: 8389668607fc51b46be100fbfa2b1255, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.005990963
+      value: 0.005990967
       objectReference: {fileID: 0}
     - target: {fileID: 2596037181715091838, guid: 8389668607fc51b46be100fbfa2b1255, type: 3}
       propertyPath: m_LocalRotation.y
@@ -3958,7 +3958,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f590f59b9bde605499fe928e5f290d88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToLoad: forest
+  sceneToLoad: space
   exit: 0
 --- !u!65 &1180344124
 BoxCollider:
