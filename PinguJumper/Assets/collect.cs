@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 public class collect : MonoBehaviour
 {
-    int coins = 0;
+    public static int coins = 0;
     [SerializeField] private AudioSource collectionSound;
 
     [SerializeField] TextMeshProUGUI coinsText;
