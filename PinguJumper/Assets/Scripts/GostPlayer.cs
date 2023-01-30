@@ -28,7 +28,7 @@ public class GostPlayer : MonoBehaviour
     }
 
     private State states;
-    private string folder = @"Antarctic_Level\";
+    private string folder = @"Antarctic_Level/";
     private string tempname = "tempRecording.txt";
     private string playname = "play.txt";
     private string ignoretag = "IGNORE";
