@@ -15,7 +15,7 @@ public class collect : MonoBehaviour
         {
             Destroy(other.gameObject);
             coins++;
-            coinsText.text = "Fish: " + coins;
+            coinsText.text = "Fish: " + coins + " / 5";
             collectionSound.Play();
         }
     }
