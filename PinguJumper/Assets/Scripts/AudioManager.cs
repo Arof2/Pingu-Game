@@ -55,6 +55,7 @@ public class AudioManager : MonoBehaviour
 
     public void playSound(string name)
     {
+        Debug.Log(name);
         SoundPrefab S = Array.Find(sounds, sound => sound.name == name);
 
         if(S == null)
@@ -74,5 +75,19 @@ public class AudioManager : MonoBehaviour
         }
         else
             thisSource.PlayOneShot(S.clip, S.volume);
+    }
+
+    public void stopLoop(string name)
+    {
+        SoundPrefab S = Array.Find(sounds, sound => sound.name == name);
+        if (S == null)
+        {
+            Debug.LogWarning("Sound: " + name + " not found.");
+            return;
+        }
+        if(S.loop)
+        {
+            S.source.Stop();
+        }
     }
 }
