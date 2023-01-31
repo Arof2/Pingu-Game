@@ -768,10 +768,10 @@ MonoBehaviour:
   playerFinalPos: {fileID: 263789117}
   cameraFinalPos: {fileID: 263789117}
   lostPinguPos: {fileID: 263789117}
-  player: {fileID: 263789116}
-  animatedPlayer: {fileID: 263789116}
-  playercamera: {fileID: 263789116}
-  gostPlayer: {fileID: 263789116}
+  player: {fileID: 1859729366}
+  animatedPlayer: {fileID: 1859729365}
+  playercamera: {fileID: 1863847918}
+  gostPlayer: {fileID: 0}
   timer: 0
 --- !u!64 &263789119
 MeshCollider:
@@ -5125,6 +5125,16 @@ PrefabInstance:
 --- !u!54 &1859729364 stripped
 Rigidbody:
   m_CorrespondingSourceObject: {fileID: 2464676662194109148, guid: 7b477f2765df7e24585c9a28a0d32031, type: 3}
+  m_PrefabInstance: {fileID: 1859729363}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1859729365 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2473488751631926028, guid: 7b477f2765df7e24585c9a28a0d32031, type: 3}
+  m_PrefabInstance: {fileID: 1859729363}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1859729366 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2464676662194109150, guid: 7b477f2765df7e24585c9a28a0d32031, type: 3}
   m_PrefabInstance: {fileID: 1859729363}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1863847918
