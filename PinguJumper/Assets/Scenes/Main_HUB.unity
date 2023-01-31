@@ -2497,6 +2497,9 @@ MonoBehaviour:
   - levelName: Level 3
     toBeActivated: {fileID: 97988185}
     won: 0
+  - levelName: space
+    toBeActivated: {fileID: 1151392897}
+    won: 0
 --- !u!4 &637292541
 Transform:
   m_ObjectHideFlags: 0
@@ -2934,10 +2937,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
-  - name: 
-    clip: {fileID: 0}
-    loop: 0
-    volume: 0
+  - name: Cave ambient
+    clip: {fileID: 8300000, guid: 565fa147f9b96ca429d9284a7ec9986b, type: 3}
+    loop: 1
+    volume: 0.477
     source: {fileID: 0}
     randomizePitch: 0
 --- !u!4 &717400314
