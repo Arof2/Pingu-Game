@@ -772,7 +772,7 @@ MonoBehaviour:
   animatedPlayer: {fileID: 1859729365}
   playercamera: {fileID: 1863847918}
   gostPlayer: {fileID: 0}
-  timer: 0
+  timer: 0.1
 --- !u!64 &263789119
 MeshCollider:
   m_ObjectHideFlags: 0
