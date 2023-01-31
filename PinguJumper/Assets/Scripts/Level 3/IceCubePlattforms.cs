@@ -14,7 +14,7 @@ public class IceCubePlattforms : MonoBehaviour
     public void Start()
     {
         GetComponent<Renderer>().enabled = false;
-        GetComponentsInChildren<Renderer>()[1].enabled = false;
+        transform.GetChild(0).GetComponent<Renderer>().enabled = false;
     }
 
     public void changeVisibilityPermenantly(bool permenant)
