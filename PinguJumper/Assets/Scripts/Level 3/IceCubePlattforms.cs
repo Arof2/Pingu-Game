@@ -17,16 +17,11 @@ public class IceCubePlattforms : MonoBehaviour
         GetComponentsInChildren<Renderer>()[1].enabled = false;
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        throw new NotImplementedException();
-    }
-
     public void changeVisibilityPermenantly(bool permenant)
     {
         permenantlyVisible = permenant;
         GetComponent<Renderer>().enabled = permenantlyVisible;
-        GetComponentsInChildren<Renderer>()[1].enabled = permenantlyVisible;
+        transform.GetChild(0).GetComponent<Renderer>().enabled = permenantlyVisible;
         
     }
 
@@ -36,14 +31,14 @@ public class IceCubePlattforms : MonoBehaviour
         if (tempvisible)
         {
             GetComponent<Renderer>().enabled = true;
-            GetComponentsInChildren<Renderer>()[1].enabled = true;
+            transform.GetChild(0).GetComponent<Renderer>().enabled = true;
         }
         else
         {
             if (!permenantlyVisible)
             {
                 GetComponent<Renderer>().enabled = false;
-                GetComponentsInChildren<Renderer>()[1].enabled = false;
+                transform.GetChild(0).GetComponent<Renderer>().enabled = false;
             }
         }
     }
