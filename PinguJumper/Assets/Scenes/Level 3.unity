@@ -1138,8 +1138,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86a16564a1c6c9b4882a3509d5bb61db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerFinalPos: {fileID: 263789117}
-  cameraFinalPos: {fileID: 263789117}
+  playerFinalPos: {fileID: 1574668514}
+  cameraFinalPos: {fileID: 35207105}
   lostPinguPos: {fileID: 8219224965087148948}
   player: {fileID: 1859729366}
   animatedPlayer: {fileID: 1859729365}
