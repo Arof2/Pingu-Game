@@ -88,7 +88,7 @@ public class PlayerBehavior : MonoBehaviour
 
    private void ChangeOrbitSpeed(float range)
    {
-      float val = range + 0.25f;
+      float val = range + 0.35f;
       cam.m_XAxis.m_MaxSpeed = startSensitivityAxisX * val;
       cam.m_YAxis.m_MaxSpeed = startSensitivityAxisY * val;
       lastMouseSpeed = range;
@@ -111,7 +111,7 @@ public class PlayerBehavior : MonoBehaviour
       if (mouseSettings)
       {
          ChangeOrbitSpeed(sensitivitySlider.value);
-         sensitivitySliderValueDisplay.text = Mathf.Round(((sensitivitySlider.value + 0.25f) * 100)) + "%";
+         sensitivitySliderValueDisplay.text = Mathf.Round(((sensitivitySlider.value +0.15f) * 100)) + "%";
       }
 
       if (inControl)
