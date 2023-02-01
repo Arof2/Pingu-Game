@@ -66,8 +66,8 @@ Benedikt:
 
 	Features:
 
-	- Replay /Gost-Player feature (Antarctic 1)
-	- Sliding & Sliping
+	- Replay /Ghost-Player feature (Antarctic 1)
+	- Sliding & Slipping
 	- Animation
 
 
@@ -107,7 +107,7 @@ Korbinian:
 	Features:
 	-Alle Features von Cave Level:
 		-prisma mechanik
-		-Dynaschime Szenen Belichtung
+		-Dynamische Szenen Belichtung
 		-Plattform an die Richtige stelle schieben (plat. snapps)
 	
 	-Save System
