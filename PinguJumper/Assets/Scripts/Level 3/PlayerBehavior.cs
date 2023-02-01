@@ -99,7 +99,16 @@ public class PlayerBehavior : MonoBehaviour
       SceneManager.LoadScene("Main_HUB");
    }
 
-   private void Update()
+    public void Reset()
+    {
+        PlayerPrefs.DeleteAll();
+        if (SceneManager.GetActiveScene().name == "Main_HUB")
+        {
+            GameObject.FindObjectOfType<SaveProgress>().UpdateTheModels();
+        }
+    }
+
+    private void Update()
    {
       if (Input.GetKeyDown(KeyCode.Escape))
       {

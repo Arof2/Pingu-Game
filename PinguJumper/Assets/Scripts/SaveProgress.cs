@@ -19,11 +19,6 @@ public class SaveProgress : MonoBehaviour
 
     private void Awake()
     {
-        for (int i = 0; i < saves.Count; i++)
-        {
-            saves[i].won = PlayerPrefs.GetInt(saves[i].levelName, 0) != 0;
-        }
-        
         UpdateTheModels();
     }
     private void OnDisable()
@@ -44,8 +39,13 @@ public class SaveProgress : MonoBehaviour
         UpdateTheModels();
     }
 
-    private void UpdateTheModels()
+    public void UpdateTheModels()
     {
+        for (int i = 0; i < saves.Count; i++)
+        {
+            saves[i].won = PlayerPrefs.GetInt(saves[i].levelName, 0) != 0;
+        }
+
         for (int i = 0; i < saves.Count; i++)
         {
             if (saves[i].toBeActivated != null)
