@@ -17,8 +17,7 @@ Controls:
 		Crtl: down
 		Spacebar: up
 	Antarctic 1:
-		Hold P at the Start of the Level: Force to show "play.txt" no matter how fast it is 
-
+		Hold P at the Start of the Level: Force to show "play.txt" (in Antarctic_Level/) no matter how fast it is (only needed to play a specific Replay)
 
 
 
